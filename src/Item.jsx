@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import styles from "./general.module.css";
 export default function Item({ item, remove }) {
   return (
     <li
@@ -13,7 +14,7 @@ export default function Item({ item, remove }) {
       <span>
         {item.content} - <b>{item.name}</b>
       </span>
-      <button onClick={() => remove(item.id)}>Delete</button>
+      <button onClick={() => remove(item.id)} className={styles.delete}>Delete</button>
     </li>
   );
 }
