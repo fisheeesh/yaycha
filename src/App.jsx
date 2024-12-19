@@ -8,7 +8,7 @@ import { useApp } from "./ThemedApp";
 import Header from "./components/Header";
 
 export default function App() {
-  const { showForm } = useApp();
+  const { showForm, setGlobalMsg } = useApp();
 
   const [data, setData] = useState([
     { id: 3, content: "Yay, interesting.", name: "Chris" },
@@ -18,11 +18,14 @@ export default function App() {
 
   const remove = (id) => {
     setData((prevData) => prevData.filter((item) => item.id !== id));
+    setGlobalMsg('An item deleted.')
   };
 
   const add = (content, name) => {
-    const id = data[data.length - 1].id + 1;
+    // const id = data[data.length - 1].id + 1;
+    const id = Math.floor(Math.random() * 10000)
     setData((prevData) => [{ id, content, name }, ...prevData,]);
+    setGlobalMsg('An item added.')
   };
 
   console.log(data)
